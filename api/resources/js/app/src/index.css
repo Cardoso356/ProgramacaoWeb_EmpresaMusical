@@ -21,7 +21,7 @@ body{
   padding: 0;
   font-size: 14px;
   color: #212121;
-  background-color:  #f6f6f6f6;
+  background-color:  #f6f6f6;
 }
 
 input{
@@ -47,7 +47,7 @@ input:focus{
 */
 
 
-.btn
+.btn,
 .btn-add,
 .btn-edit,
 .btn-delete,
@@ -61,7 +61,8 @@ input:focus{
   padding: 15px;
   color: #ffffff;
   font-size: 18px;
-  cursor: point;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 /* 1rem = 16 pixels
@@ -71,7 +72,6 @@ input:focus{
 .btn-block{
   width: 100%;
 }
-
 
 .btn-add,
 .btn-edit,
@@ -132,7 +132,7 @@ input:focus{
 
 .login-signup-form .form {
   width: 560px;
-  margin-top: 200px;
+  margin-top: 150px;
   position: relative;
   z-index: 1;
   background: white;
@@ -151,6 +151,20 @@ input:focus{
 .p-20 {
   margin-bottom: 20px;
 }
+
+.login-signup-form .form .message {
+  margin: 15px;
+  color: #b3b3b3;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login-signup-form .form .message a {
+  color: #5b08a7;
+  text-decoration: none; 
+}
+
+
 
 /*
   ESTILO PARA O DEFAULT LAYOUT:
@@ -228,7 +242,7 @@ tbody tr:hover{
 table > thead > tr > th {
   text-align: left;
   padding: 0.5rem 0.5rem;
-  background-color: #19bd1e;
+  background-color: #730dbc;
   color: white;
 }
 
@@ -261,9 +275,9 @@ th.actions, td.actions{
 }
 
 .card {
-  width: 70%;
+  width: 90%;
   max-width: 100%;
-  min-height: 30%;
+  min-height: 50%;
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
@@ -271,3 +285,4 @@ th.actions, td.actions{
   margin-bottom: 1rem;
   margin-top: 0.5rem;
 }
+

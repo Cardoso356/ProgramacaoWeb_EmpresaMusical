@@ -2,41 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\api\UsuarioController;
 use App\Http\Controllers\api\MusicoController;
 use App\Http\Controllers\api\AlbumController;
 use App\Http\Controllers\api\InstrumentoController;
 use App\Http\Controllers\api\MusicaController;
 use App\Http\Controllers\api\MusicoInstrumentoController;
 use App\Http\Controllers\api\MusicoAlbumController;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-
-//colocamos aqui as rotas determinadas da api
-Route::prefix('user')->group(function (){
-
-    Route::get('/index',[UsuarioController::class,'index']); //para pegar
-    Route::get('/show/{id}',[UsuarioController::class,'show']); //para pegar
-
-    Route::post('/store',[UsuarioController::class,'store']); //para postar/enviar
-    Route::put('/update/{id}',[UsuarioController::class,'update']); //para alterar
-
-    Route::delete('/destroy/{id}',[UsuarioController::class,'destroy']); //para pegar
-});
-
-
-
-
-
-
-
-
-
-
-
 
 
 Route::get('/musico', function (Request $request) {

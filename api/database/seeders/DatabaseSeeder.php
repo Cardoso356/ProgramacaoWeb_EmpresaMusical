@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         ]); */
 
         $this->call([
-            AutorSeeder::class,
+            //AutorSeeder::class,
             //colocar outras classes aqui
         ]);
     }

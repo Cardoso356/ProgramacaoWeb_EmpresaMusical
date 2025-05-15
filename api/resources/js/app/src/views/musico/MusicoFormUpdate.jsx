@@ -53,7 +53,7 @@ export default function MusicoFormUpdate(){
             <div className="display">
 
                 <div className="card animated fadeinDown">
-                    {musico.id && <h1>Alteração do músico</h1>}
+                    {musico.id && <h1>Alteração do Músico</h1>}
 
                 <form onSubmit={(e)=>onSubmit(e)}>
                     <input value={musico.nomeMusico} placeholder="Nome do Músico" onChange={e=> setMusico({...musico, nomeMusico: e.target.value})}/>
