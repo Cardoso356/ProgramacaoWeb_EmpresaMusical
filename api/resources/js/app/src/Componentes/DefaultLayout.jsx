@@ -1,25 +1,52 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useLogin } from '../context/ContextProvider'
+import axiosClient from "../axiosClientjs"
 
 export default function DefaultLayout({children}){
 
+const navigate = useNavigate();
+
+const {token, _setUser, _setToken, user} = useLogin();
+
+if(!token){
+  return <Navigate to="/login"/>
+}
+
+const onLogout = (e) => {
+  e.preventDefault();
+  axiosClient.post('/logout', {email: user.email})
+             .then(()=>{
+                _setUser({}); //isso limpa o objeto
+                _setToken(null);
+                navigate('/login');
+             })
+             .catch((error)=>{
+                console.log(error);
+             })
+}
+
+console.log(token);
   return (
     <div id="defaultLayout">
         <aside>
             <Link to="/dashboard" >Dashboard</Link>
             <Link to="/user/index" >Usuários</Link>
-            <Link to="/editora/index" >Editora</Link>
-            <Link to="/autor/index" >Autor</Link>
-            <Link to="/livro/index" >Livro</Link>
+            <Link to="/musico/index" >Músicos</Link>
+            <Link to="/instrumento/index" >Instrumentos</Link>
+            <Link to="/album/index" >Álbuns</Link>
+            <Link to="/musica/index" >Músicas</Link>
+            <Link to="/musicoinstrumento/index" >Músicos-Instrumentos</Link>
+            <Link to="/musicoalbum/index" >Músicos-Álbuns</Link>
         </aside>
         <div className='content'>
           <header>
             <div className='header'>
-              Sistema de Controle de Livros
+              Sistema de Gerenciamento de Empresa Musical
             </div>
             <div>
-              Francisco &nbsp; &nbsp;
-              <a className='btn-logout'>Logout</a>
+              {user.name} &nbsp; &nbsp;
+              <a onClick={onLogout} className='btn-logout' href='#'>Logout</a>
             </div>
           </header>
           <main>

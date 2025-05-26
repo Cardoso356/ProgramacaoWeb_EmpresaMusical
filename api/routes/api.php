@@ -8,7 +8,12 @@ use App\Http\Controllers\api\InstrumentoController;
 use App\Http\Controllers\api\MusicaController;
 use App\Http\Controllers\api\MusicoInstrumentoController;
 use App\Http\Controllers\api\MusicoAlbumController;
+use App\Http\Controllers\api\UsuarioController;
+use App\Http\Controllers\api\LoginController;
 
+
+Route::post('/login',[LoginController::class,'login']);
+Route::post('/logout',[LoginController::class,'logout']);
 
 Route::get('/musico', function (Request $request) {
     return $request->musico();
@@ -111,4 +116,20 @@ Route::prefix('musicoalbum')->group(function (){
     Route::put('/update/{id}',[MusicoAlbumController::class,'update']); //para alterar
 
     Route::delete('/destroy/{id}',[MusicoAlbumController::class,'destroy']); //para pegar
+});
+
+
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+
+Route::prefix('user')->group(function (){
+
+    Route::get('/index',[UsuarioController::class,'index']); //para pegar
+    Route::get('/show/{id}',[UsuarioController::class,'show']); //para pegar
+
+    Route::post('/store',[UsuarioController::class,'store']); //para postar/enviar
+    Route::put('/update/{id}',[UsuarioController::class,'update']); //para alterar
+
+    Route::delete('/destroy/{id}',[UsuarioController::class,'destroy']); //para pegar
 });
