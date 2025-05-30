@@ -14,7 +14,7 @@ class InstrumentoController extends Controller
     public function index(Request $request){
 
         $page = $request->get('page',1); //se não vier nada começa no 1
-        $pageSize = $request->get('pageSize',5); //se não vier nada mostra os registros de 5 em 5
+        $pageSize = $request->get('pageSize',10); //se não vier nada mostra os registros de 5 em 5
         $dir = $request->get('dir','asc');
         $props = $request->get('props','id');
         $search = $request->get('search','');
