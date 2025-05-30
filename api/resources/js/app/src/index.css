@@ -275,7 +275,7 @@ th.actions, td.actions{
 }
 
 .card {
-  width: 90%;
+  width: 100%;
   max-width: 100%;
   min-height: 50%;
   background-color: white;

@@ -35,7 +35,7 @@ export default function UserFormList(){
                         alignItems:'center'
                     }}>
                         <h1>
-                            Usuários
+                            Usuários do Sistema
                         </h1>
                         <Link className='btn-add' to="/user/store">Store</Link>
 
