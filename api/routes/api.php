@@ -10,10 +10,11 @@ use App\Http\Controllers\api\MusicoInstrumentoController;
 use App\Http\Controllers\api\MusicoAlbumController;
 use App\Http\Controllers\api\UsuarioController;
 use App\Http\Controllers\api\LoginController;
-
+use App\Http\Controllers\api\SignupController;
 
 Route::post('/login',[LoginController::class,'login']);
 Route::post('/logout',[LoginController::class,'logout']);
+Route::post('/register',[SignupController::class,'register']);
 
 Route::get('/musico', function (Request $request) {
     return $request->musico();

@@ -24,22 +24,59 @@ body{
   background-color:  #f6f6f6;
 }
 
-input, select{
+.form-control{
   outline: 0;
   background: #ffffff;
   width: 100%;
   border: 1px solid #584e4e;
-  margin: 0 0 15px;
-  padding: 12px;
-  font-size: 14px;
-  transition: all 0.3s;
+  padding: 15px;
+  padding-right: 45px;
+  box-sizing: border-box;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 5px;
+  color: #212529;
+ 
 }
 
-input:focus{
+.form-control:focus{
   border: 2px solid #19058d;
+  background-image: none;
+}
 
+.form-control.is-invalid{
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1 17h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
+}
+
+.form-control.is-valid{
+  border-color: #28a745;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2328a745' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17l-3.88-3.88L4 13.41l5 5 10-10-1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
+}
+
+.form-control.is-valid:focus {
+  border-color: #5b08a7;
+  background-image: none;
+}
+
+.invalid-feedback { /*usamos dentro de uma div */
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
+.valid-feedback { /*usamos dentro de uma div */
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #28a745;
 }
 
 /* 

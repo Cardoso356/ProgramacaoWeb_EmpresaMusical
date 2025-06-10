@@ -1,21 +1,22 @@
 import React, { Fragment } from 'react'
 
-const mensagemErro = () => ({
-
+const MensagemErro = ({
     error,
     mensagem
 }) => {
+    const unique = [...new Set(mensagem)]; //isso pega a mensagem que chega e aplica um Set nele, com esse unique ele não permite mensagens repetidas
+
   return (
     <Fragment>
         {
             error && (
-                <div className='invalid-feedback'>
+                <div className="invalid-feedback">
                     {
-                        mensagem.map((mens, index)=>{
-                            <p key={index} style={{ margin: "0", color: "red" }}>
-                                <span>{mens}</span>
-                            </p>
-                        })
+                        unique.map((mens, index)=>(
+                                <p key={index}>
+                                    <span style={{ margin: "0", color: "red" }}>{mens}</span>
+                                </p>
+                        ))
                     }
                 </div>
             )
@@ -24,7 +25,7 @@ const mensagemErro = () => ({
   )
 }
 
-export default mensagemErro
+export default MensagemErro
 
 /*
 0 - valor invalido para o email
