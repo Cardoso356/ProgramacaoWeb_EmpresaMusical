@@ -1,21 +1,28 @@
 import {Fragment, useEffect, useState } from "react";
 import axiosClient from "../../axiosClientjs";
 import { useNavigate, Link } from "react-router-dom";
+import { useValidarDadosMusicoAlbum } from "../../rules/MusicoAlbumValidationRules";
+import Select from "../../Componentes/input/Select";
 
 export default function MusicoAlbumFormStore(){
 
     const navigate = useNavigate();
 
-    const [musicoalbum, setMusicoAlbum] = useState({
-        id: null,
-        musicoId:"",
-        albumId:"",
-    });
+     const {
+         model, 
+         error,
+         setModel, 
+         formValid, 
+         handleChangeField, 
+         handleBlurField
+     
+     } = useValidarDadosMusicoAlbum("create");
 
     const [musicos, setMusicos] = useState([]);
+
         // Carrega os músicos ao montar o componente
             useEffect(() => {
-                axiosClient.get('/musico/index') // Ajuste o endpoint se necessário
+                axiosClient.get('/musico/index')
                     .then(({ data }) => {
                         setMusicos(data.data);
                     })
@@ -25,9 +32,10 @@ export default function MusicoAlbumFormStore(){
             }, []);
     
         const [albums, setAlbums] = useState([]);
-        // Carrega os instrumentos ao montar o componente
+
+        // Carrega os álbuns ao montar o componente
         useEffect(() => {
-            axiosClient.get('/album/index') // Ajuste o endpoint se necessário
+            axiosClient.get('/album/index')
                 .then(({ data }) => {
                     setAlbums(data.data);
                 })
@@ -39,26 +47,26 @@ export default function MusicoAlbumFormStore(){
     const onSubmit = (e) => {
 
         e.preventDefault(); //impede que o navegador recarregue a página
-        axiosClient.post(`/musicoalbum/store`, musicoalbum) // o axios que faz o acesso ao banco de dados
+        if(formValid()){
+        axiosClient.post(`/musicoalbum/store`, model) // o axios que faz o acesso ao banco de dados
             .then(()=>{
-                setMusicoAlbum({});
+                setModel({});
                 console.log('Relação de Músico - Álbum incluída com sucesso');
                 navigate('/musicoalbum/index');
             }).catch((error)=>{
                 console.log(error);
             });
+        }
     }
 
     
-
-
     return(
         <Fragment>
 
             <div className="display">
 
                 <div className="card animated fadeinDown">
-                    <h1>Inclusão de Relacionamento Músico-Álbum</h1>
+                    <h1 className="p-20">Inclusão de Relacionamento Músico-Álbum</h1>
                     
                 
 
@@ -66,7 +74,56 @@ export default function MusicoAlbumFormStore(){
                    {/*} <input type="text" value={musicoalbum.musicoId} placeholder="Id do Músico" onChange={e=> setMusicoAlbum({...musicoalbum, musicoId: e.target.value})}/>
                     <input type="text" value={musicoalbum.albumId} placeholder="Id do Álbum" onChange={e=> setMusicoAlbum({...musicoalbum, albumId: e.target.value})}/> */}
 
-                    <select
+                    <div className="p-20">
+                            {musicos.length === 0 ? (
+                                <p style={{ color: "red" }}>
+                                    Nenhum músico encontrado. Cadastre um músico antes de adicionar músicos para o relacionamento.
+                                </p>
+                            ) : (
+                                <Select
+                                    id="musicoId"
+                                    value={model.musicoId}
+                                    handleChangeField={handleChangeField}
+                                    handleBlurField={handleBlurField}
+                                    error={error.musicoId}
+                                    mensagem={error.musicoIdMensagem}
+                                    options={[
+                                        { value: "", label: "Selecione o Músico que está ligado ao Álbum" },
+                                        ...musicos.map(musico => ({
+                                            value: musico.id,
+                                            label: `${musico.id} - ${musico.nomeMusico}`
+                                        }))
+                                    ]}
+                                />
+                            )}
+                        </div>
+
+
+                    <div className="p-20">
+                            {albums.length === 0 ? (
+                                <p style={{ color: "red" }}>
+                                    Nenhum álbum encontrado. Cadastre um álbum antes de adicionar álbuns para o relacionamento.
+                                </p>
+                            ) : (
+                                <Select
+                                    id="albumId"
+                                    value={model.albumId}
+                                    handleChangeField={handleChangeField}
+                                    handleBlurField={handleBlurField}
+                                    error={error.albumId}
+                                    mensagem={error.albumIdMensagem}
+                                    options={[
+                                        { value: "", label: "Selecione o Álbum que está ligado ao Músico" },
+                                        ...albums.map(album => ({
+                                            value: album.id,
+                                            label: `${album.id} - ${album.tituloAlbum}`
+                                        }))
+                                    ]}
+                                />
+                            )}
+                        </div>
+
+                  {/*}  <select
                     value={musicoalbum.musicoId}
                     onChange={(e) => setMusicoAlbum({ ...musicoalbum, musicoId: e.target.value })} required
                 >
@@ -88,7 +145,7 @@ export default function MusicoAlbumFormStore(){
                             {album.id+" - "+album.tituloAlbum}
                         </option>
                     ))}
-                </select>
+                </select> */}
 
                     <button className="btn btn-add" to="/musicoalbum/index">Salvar</button>
                     <Link type="button" className="btn btn-cancel" to="/musicoalbum/index">Cancelar</Link>

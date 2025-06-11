@@ -24,22 +24,21 @@ export default function MusicaFormUpdate(){
     const {id} = useParams();
 
     // Carrega os álbuns ao montar o componente
-        useEffect(() => {
-            axiosClient.get('/album/index') // Ajuste o endpoint se necessário
-                .then(({ data }) => {
-                    setAlbuns(data.data);
-                })
-                .catch((error) => {
-                    console.error("Erro ao buscar álbuns:", error);
-                });
-        }, []);
+    useEffect(() => {
+        axiosClient.get('/album/index') // Ajuste o endpoint se necessário
+            .then(({ data }) => {
+                setAlbuns(data.data);
+            })
+            .catch((error) => {
+                console.error("Erro ao buscar álbuns:", error);
+            });
+    }, []);
 
     useEffect(() => {
         if (id) {
             axiosClient.get(`/musica/show/${id}`)
             .then(({ data }) => {
                 const musica = data.data;
-
                 setModel({
                 id: musica.id || "",
                 nomeMusica: musica.nomeMusica || "",
@@ -138,8 +137,7 @@ export default function MusicaFormUpdate(){
                                     label: `${album.id} - ${album.tituloAlbum}`
                                 }))
                             ]}
-                        />
-                        
+                        />                     
                     </div>
 
                     {/*<input value={musica.nomeMusica} placeholder="Nome da Música" onChange={e=> setMusica({...musica, nomeMusica: e.target.value})}/>
