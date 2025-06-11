@@ -34,7 +34,11 @@ export default function Signup(){
 
     const onSubmit = (e) => {
         e.preventDefault();
-        formValid();
+        
+        if (!formValid()) {
+            console.log("Formulário inválido, impedindo envio");
+            return;
+        }
         console.log(error);
         //validateAll();
 

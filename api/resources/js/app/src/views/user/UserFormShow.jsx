@@ -16,14 +16,13 @@ export default function UserFormShow(){
     const { id } = useParams();
 
     useEffect(()=>{
-        if (id){
-            
-                axiosClient.get(`/user/show/${id}`)
-                .then(({data})=>{
-                    setUser(data.data);
-                }).catch((error)=>{
-                    console.log(error);
-                });
+        if (id){      
+            axiosClient.get(`/user/show/${id}`)
+            .then(({data})=>{
+                setUser(data.data);
+            }).catch((error)=>{
+                console.log(error);
+            });
         }
     },[id]);
 
