@@ -126,32 +126,6 @@ export default function MusicoInstrumentoFormStore(){
                             )}
                         </div>
 
-               {/* <select
-                    value={musicoinstrumento.musicoId}
-                    onChange={(e) => setMusicoInstrumento({ ...musicoinstrumento, musicoId: e.target.value })} required
-                >
-                    <option value="">-- Selecione um músico --</option>
-                    {musicos.map((musico) => (
-                        <option key={musico.id} value={musico.id}>
-                            {musico.id+" - "+musico.nomeMusico}
-                        </option>
-                    ))}
-                </select>
-
-                <select
-                    value={musicoinstrumento.instrumentoId}
-                    onChange={(e) => setMusicoInstrumento({ ...musicoinstrumento, instrumentoId: e.target.value })}
-                    required
-                >
-                    <option value="">-- Selecione o instrumento tocado pelo músico --</option>
-                    {instrumentos.map((instrumento) => (
-                        <option key={instrumento.id} value={instrumento.id}>
-                            {instrumento.id+" - "+instrumento.nomeInstrumento}
-                        </option>
-                    ))}
-                </select>
-
-                */}
                     <button className="btn btn-add" to="/musicoinstrumento/index">Salvar</button>
                     <Link type="button" className="btn btn-cancel" to="/musicoinstrumento/index">Cancelar</Link>                    
 

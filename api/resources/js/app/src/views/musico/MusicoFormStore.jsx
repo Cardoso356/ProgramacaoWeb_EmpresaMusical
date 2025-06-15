@@ -78,7 +78,7 @@ export default function MusicoFormStore(){
                         id="cpf"
                         type="text"
                         value={model.cpf}
-                        placeholder="CPF do músico"
+                        placeholder="CPF do Músico"
                         handleChangeField={handleChangeField}
                         handleBlurField={handleBlurField}
                         error={error.cpf}

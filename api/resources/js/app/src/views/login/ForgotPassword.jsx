@@ -9,7 +9,7 @@ export default function forgoutPassword(){
 
                     <input type="text" placeholder="E-mail"/>
                     <button className='btn btn-block'>Recuperar</button>
-                    <p className='message'>Está Registrado ?</p><Link to='/login'>Login</Link>
+                    <p className='message'>Está Registrado ? <Link to='/login'>Login</Link> </p>
                 </form>
             </div>
         </div>
