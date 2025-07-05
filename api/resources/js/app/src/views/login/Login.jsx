@@ -108,7 +108,7 @@ export default function Login(){
                     <button type="Submit"
                         className='btn btn-block p-20'>Login</button>
                     <p className='message'>Não está registrado ? <Link to='/register'>Criar nova conta</Link> </p>
-                    <p className='message'>Deseja alterar a senha ? <Link to='/updatepassword'>Alterar senha</Link> </p>
+                    <p className='message'>Deseja alterar a senha ? <Link to='/forgotpassword'>Alterar senha</Link> </p>
                 </form>
             </div>
         </div>

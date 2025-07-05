@@ -11,10 +11,21 @@ use App\Http\Controllers\api\MusicoAlbumController;
 use App\Http\Controllers\api\UsuarioController;
 use App\Http\Controllers\api\LoginController;
 use App\Http\Controllers\api\SignupController;
+use App\Http\Controllers\api\RegisterUserController;
+use App\Http\Controllers\api\VerifyUserAccount;
+use App\Http\Controllers\api\ResetPasswordController;
+use App\Http\Controllers\api\ForgotPasswordController;
+
 
 Route::post('/login',[LoginController::class,'login']);
 Route::post('/logout',[LoginController::class,'logout']);
-Route::post('/register',[SignupController::class,'register']);
+Route::post('/register',[SignupController::class,'register']); //fiz para a tela de registro de usuário
+
+Route::post('/signup',[RegisterUserController::class,'signup']); //feito na aula dia 16/06
+Route::get('/verify_account',[VerifyUserAccount::class,'verifyUserAccount']); //feito na aula dia 16/06
+Route::post('/updatePassword',[ResetPasswordController::class,'updatePassword']); //feito na aula dia 30/06
+Route::post('/forgotPassword',[ForgotPasswordController::class,'forgotPassword']);
+
 
 Route::get('/musico', function (Request $request) {
     return $request->musico();

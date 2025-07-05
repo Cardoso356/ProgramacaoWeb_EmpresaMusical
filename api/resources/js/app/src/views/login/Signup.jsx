@@ -13,7 +13,7 @@ export default function Signup(){
         handleChangeField, 
         handleBlurField,
     
-        } = useValidarDadosSignup();
+    } = useValidarDadosSignup();
     
     //const {model, error, formValid, handleChangeField, validateAll} = useValidarDadosSignup();
     
@@ -34,23 +34,19 @@ export default function Signup(){
 
     const onSubmit = (e) => {
         e.preventDefault();
-        
-        if (!formValid()) {
-            console.log("Formulário inválido, impedindo envio");
-            return;
-        }
+        formValid();
         console.log(error);
         //validateAll();
 
 
-        const register = {
+        const signup = {
             name: model.name,
             email: model.email,
             password: model.password,
             confirmPassword: model.confirmPassword,
         }
 
-        axiosClient.post('/register', register)
+        axiosClient.post('/signup', signup)
                     .then(({data})=>{
                         console.log(data);
                        // _setToken(data.token);
