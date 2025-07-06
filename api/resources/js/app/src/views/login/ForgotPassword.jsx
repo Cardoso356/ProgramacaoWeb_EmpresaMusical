@@ -45,8 +45,7 @@ const {
             });
 
             setMessage("Verifique sua caixa de e-mail. O link de redefinição foi enviado.");
-            // Você pode redirecionar depois de alguns segundos se quiser
-            // setTimeout(() => navigate('/login'), 4000);
+            
         } catch (erro) {
             console.log(erro);
             if (erro.response?.data?.message) {
@@ -62,7 +61,7 @@ const {
         <div className="login-signup-form animated fadeInDown">
             <div className="form">
                 <form onSubmit={onSubmit}>
-                    <h1 className="title p-20">E-mail para recuperação de senha</h1>
+                    <h1 className="title p-20">E-mail para redefinição de senha</h1>
                     {
                         message &&
                         <div className="alert">
@@ -86,7 +85,7 @@ const {
                         }
                     </div>
 
-                    <button className='btn btn-block'>Recuperar senha</button>
+                    <button className='btn btn-block'>Redefinir senha</button>
                     <p className='message'>Deseja retornar para o Login ? <Link to='/login'>Login</Link> </p>
                 </form>
             </div>

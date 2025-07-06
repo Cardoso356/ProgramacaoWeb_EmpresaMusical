@@ -48,6 +48,7 @@ export default function Login(){
         axiosClient.post('/login', login)
                     .then(({data})=>{
                         console.log(data);
+                        localStorage.setItem('TOKEN', data.token);  // Salva o token no localStorage
                         _setToken(data.token);
                         _setUser(data.user);
                         //setMessage('Login realizado com sucesso'+login);

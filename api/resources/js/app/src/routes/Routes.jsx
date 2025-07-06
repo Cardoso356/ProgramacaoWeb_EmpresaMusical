@@ -43,6 +43,7 @@ import Login from '../views/login/Login'
 import Signup from '../views/login/Signup'
 import UpdatePassword from '../views/login/UpdatePassword'
 import ForgotPassword from '../views/login/ForgotPassword'
+import ChangePassword from '../views/login/ChangePassword'
 
 const Rotas = () => {
   return (
@@ -53,6 +54,7 @@ const Rotas = () => {
         <Route path='/register' element={<Signup/>}/>
         <Route path='/forgotpassword' element={<ForgotPassword/>}/>
         <Route path='/updatepassword' element={<UpdatePassword/>}/>
+        <Route path='/changepassword' element={<ChangePassword/>}/>
 
         <Route element={<Layout/>}>
           <Route path='/dashboard' element={<Dashboard/>} />
